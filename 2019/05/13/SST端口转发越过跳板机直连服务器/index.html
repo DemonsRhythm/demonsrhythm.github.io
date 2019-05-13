@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="network,">
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="因为装系统啊维护服务器啥的遇到的问题太多了，决定自己整理一下解决方案，免得每次都要重新搜。">
+<meta name="description" content="1. 需求假设服务器仅能通过跳板机进行连接，一般情况下连接服务器需要以下两步：  连接跳板机：ssh user@xxx.xxx.xxx.xxx -p xx  连接服务器：ssh user@serverip -p xx (此时在跳板机环境下)   如果需要传文件给服务器，则需要先传给跳板机，再传给服务器，非常麻烦。windows有一些工具可设置ssh隧道使得文件可以直接传给服务器，不过如果不想用这些">
+<meta name="keywords" content="network">
 <meta property="og:type" content="article">
-<meta property="og:title" content="打算做的事">
-<meta property="og:url" content="http://yoursite.com/2018/11/24/打算做的事/index.html">
+<meta property="og:title" content="SST端口转发越过跳板机直连服务器">
+<meta property="og:url" content="http://yoursite.com/2019/05/13/SST端口转发越过跳板机直连服务器/index.html">
 <meta property="og:site_name" content="Fomalhaut">
-<meta property="og:description" content="因为装系统啊维护服务器啥的遇到的问题太多了，决定自己整理一下解决方案，免得每次都要重新搜。">
+<meta property="og:description" content="1. 需求假设服务器仅能通过跳板机进行连接，一般情况下连接服务器需要以下两步：  连接跳板机：ssh user@xxx.xxx.xxx.xxx -p xx  连接服务器：ssh user@serverip -p xx (此时在跳板机环境下)   如果需要传文件给服务器，则需要先传给跳板机，再传给服务器，非常麻烦。windows有一些工具可设置ssh隧道使得文件可以直接传给服务器，不过如果不想用这些">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-08T14:37:36.071Z">
+<meta property="og:updated_time" content="2019-05-13T12:20:53.018Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="打算做的事">
-<meta name="twitter:description" content="因为装系统啊维护服务器啥的遇到的问题太多了，决定自己整理一下解决方案，免得每次都要重新搜。">
+<meta name="twitter:title" content="SST端口转发越过跳板机直连服务器">
+<meta name="twitter:description" content="1. 需求假设服务器仅能通过跳板机进行连接，一般情况下连接服务器需要以下两步：  连接跳板机：ssh user@xxx.xxx.xxx.xxx -p xx  连接服务器：ssh user@serverip -p xx (此时在跳板机环境下)   如果需要传文件给服务器，则需要先传给跳板机，再传给服务器，非常麻烦。windows有一些工具可设置ssh隧道使得文件可以直接传给服务器，不过如果不想用这些">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/24/打算做的事/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/13/SST端口转发越过跳板机直连服务器/">
 
 
 
 
 
-  <title>打算做的事 | Fomalhaut</title>
+  <title>SST端口转发越过跳板机直连服务器 | Fomalhaut</title>
   
 
 
@@ -264,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/24/打算做的事/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/13/SST端口转发越过跳板机直连服务器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hugh">
@@ -281,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">打算做的事</h1>
+          <h1 class="post-title" itemprop="name headline">SST端口转发越过跳板机直连服务器</h1>
         
 
         <div class="post-meta">
@@ -293,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-24T17:13:45+08:00">
-                2018-11-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-13T19:56:00+08:00">
+                2019-05-13
               </time>
             
 
@@ -331,7 +332,30 @@
       
 
       
-        <p>因为装系统啊维护服务器啥的遇到的问题太多了，决定自己整理一下解决方案，免得每次都要重新搜。</p>
+        <h3 id="1-需求"><a href="#1-需求" class="headerlink" title="1. 需求"></a>1. 需求</h3><p>假设服务器仅能通过跳板机进行连接，一般情况下连接服务器需要以下两步：</p>
+<ol>
+<li><p>连接跳板机：ssh <a href="mailto:user@xxx.xxx.xxx.xxx" target="_blank" rel="noopener">user@xxx.xxx.xxx.xxx</a> -p xx</p>
+</li>
+<li><p>连接服务器：ssh user@serverip -p xx (此时在跳板机环境下)</p>
+</li>
+</ol>
+<p>如果需要传文件给服务器，则需要先传给跳板机，再传给服务器，非常麻烦。windows有一些工具可设置ssh隧道使得文件可以直接传给服务器，不过如果不想用这些ftp工具，使用putty也可以直接实现这个功能。</p>
+<h3 id="2-步骤"><a href="#2-步骤" class="headerlink" title="2. 步骤"></a>2. 步骤</h3><ul>
+<li><p><strong>Windows(putty)</strong></p>
+<ol>
+<li>session里HostName设置的是跳板机IP，端口为跳板机端口</li>
+<li>Connection-SSH-Tunnels, Add new forwarded port：在下方选项为Local情况下，source port填写的端口号为本机端口，destination填写服务器IP:port，点击add，添加成功会从上方forwarded ports内看到添加的转发端口。</li>
+<li>保存session</li>
+<li>这种方法仍然需要先登录到跳板机，之后再新建一个ssh连接到本机刚刚设置的端口，你就会发现已经登录到服务器了。</li>
+</ol>
+</li>
+<li><p><strong>Mac OS/Linux</strong></p>
+<p>linux下只需要一条命令，即可直接连接服务器。</p>
+<p><code>ssh -f -N -g -L 3000:172.20.0.7:22 user@jumpserver_ip -p 3000</code></p>
+<p>这条命令第一个3000是本机端口，省略了127.0.0.1；172开头的IP是服务器IP，端口号22；后面是跳板机IP加端口。这条命令使得后台运行了ssh服务，然后直接ssh连接127.0.0.1:3000就可以登录服务器。</p>
+</li>
+</ul>
+
       
     </div>
     
@@ -346,6 +370,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/network/" rel="tag"># network</a>
+          
+        </div>
+      
 
       
       
@@ -355,15 +385,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/11/26/日语初级上-5单元/" rel="next" title="日语初级上-5单元">
+                <i class="fa fa-chevron-left"></i> 日语初级上-5单元
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/25/日语初级上-3单元/" rel="prev" title="日语初级上-3单元">
-                日语初级上-3单元 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -415,8 +445,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -485,6 +524,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-需求"><span class="nav-number">1.</span> <span class="nav-text">1. 需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-步骤"><span class="nav-number">2.</span> <span class="nav-text">2. 步骤</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

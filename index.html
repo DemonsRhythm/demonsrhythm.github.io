@@ -264,6 +264,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/13/SST端口转发越过跳板机直连服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hugh">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fomalhaut">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/13/SST端口转发越过跳板机直连服务器/" itemprop="url">SST端口转发越过跳板机直连服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-13T19:56:00+08:00">
+                2019-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-需求"><a href="#1-需求" class="headerlink" title="1. 需求"></a>1. 需求</h3><p>假设服务器仅能通过跳板机进行连接，一般情况下连接服务器需要以下两步：</p>
+<ol>
+<li><p>连接跳板机：ssh <a href="mailto:user@xxx.xxx.xxx.xxx" target="_blank" rel="noopener">user@xxx.xxx.xxx.xxx</a> -p xx</p>
+</li>
+<li><p>连接服务器：ssh user@serverip -p xx (此时在跳板机环境下)</p>
+</li>
+</ol>
+<p>如果需要传文件给服务器，则需要先传给跳板机，再传给服务器，非常麻烦。windows有一些工具可设置ssh隧道使得文件可以直接传给服务器，不过如果不想用这些ftp工具，使用putty也可以直接实现这个功能。</p>
+<h3 id="2-步骤"><a href="#2-步骤" class="headerlink" title="2. 步骤"></a>2. 步骤</h3><ul>
+<li><p><strong>Windows(putty)</strong></p>
+<ol>
+<li>session里HostName设置的是跳板机IP，端口为跳板机端口</li>
+<li>Connection-SSH-Tunnels, Add new forwarded port：在下方选项为Local情况下，source port填写的端口号为本机端口，destination填写服务器IP:port，点击add，添加成功会从上方forwarded ports内看到添加的转发端口。</li>
+<li>保存session</li>
+<li>这种方法仍然需要先登录到跳板机，之后再新建一个ssh连接到本机刚刚设置的端口，你就会发现已经登录到服务器了。</li>
+</ol>
+</li>
+<li><p><strong>Mac OS/Linux</strong></p>
+<p>linux下只需要一条命令，即可直接连接服务器。</p>
+<p><code>ssh -f -N -g -L 3000:172.20.0.7:22 user@jumpserver_ip -p 3000</code></p>
+<p>这条命令第一个3000是本机端口，省略了127.0.0.1；172开头的IP是服务器IP，端口号22；后面是跳板机IP加端口。这条命令使得后台运行了ssh服务，然后直接ssh连接127.0.0.1:3000就可以登录服务器。</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/日语初级上-5单元/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1005,7 +1147,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1027,7 +1169,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

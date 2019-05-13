@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-08T14:37:36.073Z</updated>
+  <updated>2019-05-13T12:20:53.018Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SST端口转发越过跳板机直连服务器</title>
+    <link href="http://yoursite.com/2019/05/13/SST%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E8%B6%8A%E8%BF%87%E8%B7%B3%E6%9D%BF%E6%9C%BA%E7%9B%B4%E8%BF%9E%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>http://yoursite.com/2019/05/13/SST端口转发越过跳板机直连服务器/</id>
+    <published>2019-05-13T11:56:00.000Z</published>
+    <updated>2019-05-13T12:20:53.018Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-需求"><a href="#1-需求" class="headerlink" title="1. 需求"></a>1. 需求</h3><p>假设服务器仅能通过跳板机进行连接，一般情况下连接服务器需要以下两步：</p><ol><li><p>连接跳板机：ssh <a href="mailto:user@xxx.xxx.xxx.xxx" target="_blank" rel="noopener">user@xxx.xxx.xxx.xxx</a> -p xx</p></li><li><p>连接服务器：ssh user@serverip -p xx (此时在跳板机环境下)</p></li></ol><p>如果需要传文件给服务器，则需要先传给跳板机，再传给服务器，非常麻烦。windows有一些工具可设置ssh隧道使得文件可以直接传给服务器，不过如果不想用这些ftp工具，使用putty也可以直接实现这个功能。</p><h3 id="2-步骤"><a href="#2-步骤" class="headerlink" title="2. 步骤"></a>2. 步骤</h3><ul><li><p><strong>Windows(putty)</strong></p><ol><li>session里HostName设置的是跳板机IP，端口为跳板机端口</li><li>Connection-SSH-Tunnels, Add new forwarded port：在下方选项为Local情况下，source port填写的端口号为本机端口，destination填写服务器IP:port，点击add，添加成功会从上方forwarded ports内看到添加的转发端口。</li><li>保存session</li><li>这种方法仍然需要先登录到跳板机，之后再新建一个ssh连接到本机刚刚设置的端口，你就会发现已经登录到服务器了。</li></ol></li><li><p><strong>Mac OS/Linux</strong></p><p>linux下只需要一条命令，即可直接连接服务器。</p><p><code>ssh -f -N -g -L 3000:172.20.0.7:22 user@jumpserver_ip -p 3000</code></p><p>这条命令第一个3000是本机端口，省略了127.0.0.1；172开头的IP是服务器IP，端口号22；后面是跳板机IP加端口。这条命令使得后台运行了ssh服务，然后直接ssh连接127.0.0.1:3000就可以登录服务器。</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-需求&quot;&gt;&lt;a href=&quot;#1-需求&quot; class=&quot;headerlink&quot; title=&quot;1. 需求&quot;&gt;&lt;/a&gt;1. 需求&lt;/h3&gt;&lt;p&gt;假设服务器仅能通过跳板机进行连接，一般情况下连接服务器需要以下两步：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;连接跳板机：ssh
+      
+    
+    </summary>
+    
+    
+      <category term="network" scheme="http://yoursite.com/tags/network/"/>
+    
+  </entry>
   
   <entry>
     <title>日语初级上-5单元</title>
