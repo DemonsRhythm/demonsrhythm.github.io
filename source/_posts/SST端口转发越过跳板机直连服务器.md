@@ -1,9 +1,7 @@
 ---
 title: SST端口转发越过跳板机直连服务器
 date: 2019-05-13 19:56:00
-tags: 
-    - network
-	- ssh
+tags: network
 ---
 
 ### 1. 需求
