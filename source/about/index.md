@@ -6,8 +6,7 @@ date: 2018-11-24 16:55:53
 ### Major
 
 - Machine Learning / Deep Learning
-- Data Mining
-- Marine Big Data
+- Object Detection
 - Python / C++ > Javascript > C#
 
 ### Interest
