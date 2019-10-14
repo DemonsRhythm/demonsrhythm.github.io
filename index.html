@@ -335,31 +335,22 @@
       
         
           
-            <h3 id="1-需求"><a href="#1-需求" class="headerlink" title="1. 需求"></a>1. 需求</h3><p>假设服务器仅能通过跳板机进行连接，一般情况下连接服务器需要以下两步：</p>
-<ol>
-<li><p>连接跳板机：ssh <a href="mailto:user@xxx.xxx.xxx.xxx" target="_blank" rel="noopener">user@xxx.xxx.xxx.xxx</a> -p xx</p>
-</li>
-<li><p>连接服务器：ssh user@serverip -p xx (此时在跳板机环境下)</p>
-</li>
-</ol>
-<p>如果需要传文件给服务器，则需要先传给跳板机，再传给服务器，非常麻烦。windows有一些工具可设置ssh隧道使得文件可以直接传给服务器，不过如果不想用这些ftp工具，使用putty也可以直接实现这个功能。</p>
-<h3 id="2-步骤"><a href="#2-步骤" class="headerlink" title="2. 步骤"></a>2. 步骤</h3><ul>
-<li><p><strong>Windows(putty)</strong></p>
-<ol>
-<li>session里HostName设置的是跳板机IP，端口为跳板机端口</li>
-<li>Connection-SSH-Tunnels, Add new forwarded port：在下方选项为Local情况下，source port填写的端口号为本机端口，destination填写服务器IP:port，点击add，添加成功会从上方forwarded ports内看到添加的转发端口。</li>
-<li>保存session</li>
-<li>这种方法仍然需要先登录到跳板机，之后再新建一个ssh连接到本机刚刚设置的端口，你就会发现已经登录到服务器了。</li>
-</ol>
-</li>
-<li><p><strong>Mac OS/Linux</strong></p>
-<p>linux下只需要一条命令，即可直接连接服务器。</p>
-<p><code>ssh -f -N -g -L 3000:172.20.0.7:22 user@jumpserver_ip -p 3000</code></p>
-<p>这条命令第一个3000是本机端口，省略了127.0.0.1；172开头的IP是服务器IP，端口号22；后面是跳板机IP加端口。这条命令使得后台运行了ssh服务，然后直接ssh连接127.0.0.1:3000就可以登录服务器。</p>
-</li>
-</ul>
+          1. 需求假设服务器仅能通过跳板机进行连接，一般情况下连接服务器需要以下两步：
 
-          
+连接跳板机：ssh user@xxx.xxx.xxx.xxx -p xx
+
+连接服务器：ssh user@serverip -p xx (此时在跳板机环境下)
+
+
+如果需要传文件给服务器，则需要先传给跳板机，再传给服务
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/13/SST端口转发越过跳板机直连服务器/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -499,10 +490,17 @@
       
         
           
-            <h4 id="ほしい和たい"><a href="#ほしい和たい" class="headerlink" title="ほしい和たい"></a>ほしい和たい</h4><p>![图1][note1.png]</p>
-<h4 id="します和なります"><a href="#します和なります" class="headerlink" title="します和なります"></a>します和なります</h4><p>![图2][note2.png]</p>
+          ほしい和たい![图1][note1.png]
+します和なります![图2][note2.png]
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/26/日语初级上-5单元/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -642,165 +640,28 @@
       
         
           
-            <ul>
-<li>XX する　→　动词性名词/外来语</li>
-<li>みぎ　―　ひだり　（右-左）</li>
-</ul>
-<h4 id="数量词"><a href="#数量词" class="headerlink" title="数量词"></a>数量词</h4><ul>
-<li><p>一つ　二つ　…　九つ　十　十一　（いくつ）</p>
-</li>
-<li><p>数词＋量词  册/枚/本/匹/人…  （何＋量词）</p>
-</li>
-<li><p>時間　年間　か月（間）　週間　日間　（何＋量词）<br>どれぐらい／どのぐらい</p>
-</li>
-<li><p>数量词放在动词前，表时间的不受限制</p>
-<blockquote>
-<p>昨日　ビールを　どれぐらい　飲みましたか。<br>―　３本　飲みました。</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="で"><a href="#で" class="headerlink" title="で"></a>で</h4><ul>
-<li><p>工具手段    </p>
-<blockquote>
-<p>バスで　行きます。</p>
-</blockquote>
-</li>
-<li><p>动作发生的场所    </p>
-<blockquote>
-<p>図書館で　勉強します。</p>
-</blockquote>
-</li>
-<li><p>限定范围，单位为1的时候可以省略    </p>
-<blockquote>
-<p>すみません、この　トマトは　いくらですか。</p>
-<p>―　一つ　40円です。　３つで　１００円です。</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="に"><a href="#に" class="headerlink" title="に"></a>に</h4><ul>
-<li><p>存在的地点</p>
-<blockquote>
-<p>机の上に　本が　あります。</p>
-</blockquote>
-</li>
-<li><p>时间点</p>
-<blockquote>
-<p>森さんは　7時半に　起きます。</p>
-</blockquote>
-</li>
-<li><p>动作对象</p>
-<blockquote>
-<p>私は　李さんに　本を　もらいました。</p>
-</blockquote>
-</li>
-<li><p>移动目的地（具体的地方）可以与へ替换</p>
-<blockquote>
-<p>病院に　行きます。</p>
-</blockquote>
-</li>
-<li><p>频率的基准</p>
-<blockquote>
-<p>月に　3回ぐらい　映画を　見ます。　</p>
-</blockquote>
-</li>
-<li><p>移动至某地的目的</p>
-<blockquote>
-<p>お金を　借りに　来ました。</p>
-</blockquote>
-</li>
-<li><p>归着点、着落点、附着点</p>
-<blockquote>
-<p>車を　ここで（车还要继续走）/ に（车不走了）　止めてください。</p>
-<p>靴を脱いで、家に　入ってください。</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="を"><a href="#を" class="headerlink" title="を"></a>を</h4><ul>
-<li><p>动作内容</p>
-<blockquote>
-<p>水を　飲みます。</p>
-</blockquote>
-</li>
-<li><p>动作的起点</p>
-<blockquote>
-<p>毎朝　8時に　家を　出ます。</p>
-</blockquote>
-</li>
-<li><p>移动经过的场所</p>
-<blockquote>
-<p>前の交差点を　曲がってください。</p>
-</blockquote>
-</li>
-<li><p>动作移动的范围</p>
-<blockquote>
-<p>廊下を　走っては　いけません。</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="を与から"><a href="#を与から" class="headerlink" title="を与から"></a>を与から</h4><ul>
-<li><p>主语是无意志的　→　から</p>
-<blockquote>
-<p>水が　コップから　溢れる（あふれる）。</p>
-<p>花瓶（はながめ）が　テーブルから　落ちる（おちる）。</p>
-<p>涙（なみだ）が　目から　出る。</p>
-</blockquote>
-</li>
-<li><p>动作无意识　→　から</p>
-<blockquote>
-<p>彼は　屋上（おくじょう）から　落ちた。</p>
-</blockquote>
-</li>
-<li><p>具体，有意识　→　都可</p>
-<blockquote>
-<p>バスから／を　降りる（おりる）。</p>
-<p>りんさんが　部屋から　出る。</p>
-</blockquote>
-</li>
-<li><p>抽象意味上的离开　→　を</p>
-<blockquote>
-<p>李さんは　大学を　卒業（そつぎょう）した。</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="て形"><a href="#て形" class="headerlink" title="て形"></a>て形</h4><ul>
-<li><p>动词：て</p>
-<p><img src="note1.png" alt="て形变换"></p>
-</li>
-<li><p>形容词：い　→　くて</p>
-</li>
-<li><p>名词：だ　→　で</p>
-</li>
-<li><p><strong>てから</strong></p>
-<blockquote>
-<p>エアコンを　消してから、部屋を　出ました。</p>
-<p>薬を　飲んでから、ゆっくり　休んでください。</p>
-</blockquote>
-</li>
-<li><p><strong>ています</strong>　进行时/动作结果/状态持续</p>
-<blockquote>
-<p>今　作っていますから、ちょっと　待ってください。</p>
-<p>地震（じしん）のニュースを　知っていますか。</p>
-</blockquote>
-</li>
-<li><p>てください</p>
-<blockquote>
-<p>パスポートを　見せてください。</p>
-<p>すみませんか、お名前を　教えてくださいませんか。</p>
-</blockquote>
-</li>
-<li><p>ても　いいです／かまいません</p>
-<blockquote>
-<p>あのう、ここで　待っても　いいですか。</p>
-</blockquote>
-</li>
-<li><p>では　いけません／だめです</p>
-<blockquote>
-<p>ここに　入っては　いけませんよ。</p>
-</blockquote>
-</li>
-</ul>
-
           
+XX する　→　动词性名词/外来语
+みぎ　―　ひだり　（右-左）
+
+数量词
+一つ　二つ　…　九つ　十　十一　（いくつ）
+
+数词＋量词  册/枚/本/匹/人…  （何＋量词）
+
+時間　年間　か月（間）　週間　日間　（何＋量词）どれぐらい／どのぐらい
+
+数量词放在动词前，表时间的不受限制
+
+昨日　ビー
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/25/日语初级上-4单元/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -940,13 +801,20 @@
       
         
           
-            <h4 id="助动词、他动词"><a href="#助动词、他动词" class="headerlink" title="助动词、他动词"></a>助动词、他动词</h4><p>大坂は　おいしい。　→　大坂は　食べ物が　おいしい。</p>
-<p>上海は　暑い。　→　上海は　夏が　暑い。</p>
-<h4 id="より-ほど-のほうが"><a href="#より-ほど-のほうが" class="headerlink" title="より　ほど　のほうが"></a>より　ほど　のほうが</h4><p>肉は　野菜より　好きです。</p>
-<p>野菜は　肉ほど　好きではありません。</p>
-<p>（野菜より）肉のほうが　好きです。</p>
+          助动词、他动词大坂は　おいしい。　→　大坂は　食べ物が　おいしい。
+上海は　暑い。　→　上海は　夏が　暑い。
+より　ほど　のほうが肉は　野菜より　好きです。
+野菜は　肉ほど　好きではありません。
+（野菜より）肉のほうが　好きです。
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/25/日语初级上-3单元/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1064,8 +932,15 @@
       
         
           
-            <p>因为装系统啊维护服务器啥的遇到的问题太多了，决定自己整理一下解决方案，免得每次都要重新搜。</p>
+          因为装系统啊维护服务器啥的遇到的问题太多了，决定自己整理一下解决方案，免得每次都要重新搜。
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/24/打算做的事/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
